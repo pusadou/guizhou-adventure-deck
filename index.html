@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>贵州冒险 · 七日 · 4 男胆大版</title>
+  <title>贵州冒险 · 七日 · 4 男胆大版 · 完整攻略</title>
   <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -12,18 +12,12 @@
       --red: #D8000F;
       --light: #F5F2EF;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html, body {
-      width: 100%; height: 100%;
-      overflow: hidden;
+      width: 100%; height: 100%; overflow: hidden;
       background: var(--bg);
-      font-family: 'Libre Baskerville', serif;
-      color: var(--dark);
+      font-family: 'Libre Baskerville', serif; color: var(--dark);
     }
-
-    /* ---------- NAV ---------- */
     .progress {
       position: fixed; bottom: 0; left: 0; height: 5px;
       background: var(--red); z-index: 100;
@@ -44,7 +38,6 @@
     }
     body:hover .hint { opacity: 0.5; }
 
-    /* ---------- SLIDE SYSTEM ---------- */
     .slides { width: 100%; height: 100%; position: relative; }
     .slide {
       position: absolute; inset: 0;
@@ -53,422 +46,132 @@
       opacity: 0; pointer-events: none;
       transform: translateY(30px) scale(0.98);
       transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22,1,0.36,1);
-      overflow: hidden; padding: 48px 56px;
+      overflow: hidden; padding: 40px 48px;
     }
-    .slide.active {
-      opacity: 1; pointer-events: all;
-      transform: translateY(0) scale(1);
-    }
+    .slide.active { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
 
-    /* ---------- SLIDE 1: HERO ---------- */
-    .slide-hero {
-      background: var(--bg);
-      justify-content: flex-start; align-items: flex-start;
-      padding-top: 5vh; padding-left: 7vw;
-    }
-    .hero-meta {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(11px, 1vw, 14px);
-      color: var(--dark); opacity: 0.6;
-      margin-bottom: 1.5vh; letter-spacing: 0.5px;
-    }
+    /* HERO */
+    .slide-hero { background: var(--bg); justify-content: flex-start; align-items: flex-start; padding-top: 5vh; padding-left: 7vw; }
+    .hero-meta { font-family: 'Libre Baskerville', serif; font-size: clamp(11px, 1vw, 14px); color: var(--dark); opacity: 0.6; margin-bottom: 1.5vh; letter-spacing: 0.5px; }
     .hero-title-group { position: relative; width: 100%; }
-    .hero-title {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(72px, 16vw, 220px);
-      line-height: 0.88; color: var(--dark); letter-spacing: 1px;
-    }
-    .hero-title.red {
-      color: var(--red);
-      font-size: clamp(84px, 18vw, 260px);
-      line-height: 0.85; transform: rotate(-4deg);
-      display: inline-block; margin-left: -0.5vw; margin-top: -2vh;
-    }
-    .hero-title.bottom {
-      font-size: clamp(64px, 14vw, 200px);
-      line-height: 0.9; transform: rotate(2deg);
-      display: inline-block; margin-top: -1vh;
-    }
-    .hero-tagline {
-      position: absolute; right: 7vw; bottom: 8vh;
-      text-align: right; max-width: 320px;
-    }
-    .hero-tagline .tag-label {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(10px, 0.9vw, 12px);
-      letter-spacing: 3px; text-transform: uppercase;
-      font-weight: 600; color: var(--red); margin-bottom: 8px;
-    }
-    .hero-tagline .tag-body {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(13px, 1.2vw, 16px);
-      line-height: 1.6; color: var(--dark);
-    }
+    .hero-title { font-family: 'Shrikhand', cursive; font-size: clamp(72px, 16vw, 220px); line-height: 0.88; color: var(--dark); letter-spacing: 1px; }
+    .hero-title.red { color: var(--red); font-size: clamp(84px, 18vw, 260px); line-height: 0.85; transform: rotate(-4deg); display: inline-block; margin-left: -0.5vw; margin-top: -2vh; }
+    .hero-title.bottom { font-size: clamp(64px, 14vw, 200px); line-height: 0.9; transform: rotate(2deg); display: inline-block; margin-top: -1vh; }
+    .hero-tagline { position: absolute; right: 7vw; bottom: 8vh; text-align: right; max-width: 320px; }
+    .hero-tagline .tag-label { font-family: 'Space Grotesk', sans-serif; font-size: clamp(10px, 0.9vw, 12px); letter-spacing: 3px; text-transform: uppercase; font-weight: 600; color: var(--red); margin-bottom: 8px; }
+    .hero-tagline .tag-body { font-family: 'Libre Baskerville', serif; font-size: clamp(13px, 1.2vw, 16px); line-height: 1.6; color: var(--dark); }
 
-    /* ---------- SLIDE 2: RED STATEMENT ---------- */
-    .slide-red {
-      background: var(--red); color: var(--bg);
-      text-align: center; justify-content: center;
-    }
-    .red-quote {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(32px, 7vw, 90px);
-      line-height: 1.15;
-      text-shadow: 2px 2px 0 rgba(28,20,16,0.25), 4px 4px 0 rgba(28,20,16,0.2), 6px 6px 0 rgba(28,20,16,0.15);
-      max-width: 900px;
-    }
-    .red-cite {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(13px, 1.3vw, 16px);
-      margin-top: 3vh; opacity: 0.85;
-    }
+    /* RED */
+    .slide-red { background: var(--red); color: var(--bg); text-align: center; justify-content: center; }
+    .red-quote { font-family: 'Shrikhand', cursive; font-size: clamp(32px, 7vw, 90px); line-height: 1.15; text-shadow: 2px 2px 0 rgba(28,20,16,0.25), 4px 4px 0 rgba(28,20,16,0.2), 6px 6px 0 rgba(28,20,16,0.15); max-width: 900px; }
+    .red-cite { font-family: 'Libre Baskerville', serif; font-size: clamp(13px, 1.3vw, 16px); margin-top: 3vh; opacity: 0.85; }
 
-    /* ---------- SLIDE 3: EXECUTIVE SUMMARY ---------- */
+    /* SUMMARY */
     .slide-summary { background: var(--bg); justify-content: center; align-items: center; }
     .summary-inner { width: 100%; max-width: 1100px; }
-    .summary-header {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(32px, 5vw, 64px);
-      color: var(--dark); line-height: 1; margin-bottom: 4vh;
-    }
-    .summary-columns {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 48px; margin-bottom: 4vh;
-    }
-    .summary-col {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(13px, 1.2vw, 16px);
-      line-height: 1.75; color: var(--dark);
-    }
-    .summary-col strong {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 600; font-size: 0.95em; letter-spacing: 0.3px;
-    }
-    .summary-highlights {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 0; border: 2px solid var(--dark);
-    }
-    .summary-hl {
-      padding: 20px 24px; border: 1px solid var(--dark);
-      display: flex; flex-direction: column;
-    }
-    .summary-hl .hl-num {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(28px, 3.5vw, 48px);
-      color: var(--red); line-height: 1; margin-bottom: 6px;
-    }
-    .summary-hl .hl-label {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 10px; letter-spacing: 2px;
-      text-transform: uppercase; font-weight: 600;
-      color: var(--dark); margin-bottom: 4px;
-    }
-    .summary-hl .hl-body {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(11px, 1vw, 13px);
-      line-height: 1.5; color: var(--dark); opacity: 0.75;
-    }
+    .summary-header { font-family: 'Shrikhand', cursive; font-size: clamp(32px, 5vw, 64px); color: var(--dark); line-height: 1; margin-bottom: 4vh; }
+    .summary-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 4vh; }
+    .summary-col { font-family: 'Libre Baskerville', serif; font-size: clamp(13px, 1.2vw, 16px); line-height: 1.75; color: var(--dark); }
+    .summary-col strong { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.95em; letter-spacing: 0.3px; }
+    .summary-highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 2px solid var(--dark); }
+    .summary-hl { padding: 20px 24px; border: 1px solid var(--dark); display: flex; flex-direction: column; }
+    .summary-hl .hl-num { font-family: 'Shrikhand', cursive; font-size: clamp(28px, 3.5vw, 48px); color: var(--red); line-height: 1; margin-bottom: 6px; }
+    .summary-hl .hl-label { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+    .summary-hl .hl-body { font-family: 'Libre Baskerville', serif; font-size: clamp(11px, 1vw, 13px); line-height: 1.5; color: var(--dark); opacity: 0.75; }
 
-    /* ---------- SLIDE FINANCIAL GRID ---------- */
+    /* FINANCIAL */
     .slide-financial { background: var(--bg); justify-content: center; align-items: stretch; }
-    .fin-header {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(36px, 6vw, 72px);
-      color: var(--dark); margin-bottom: 3vh; line-height: 1;
-    }
-    .fin-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 0; width: 100%; max-width: 1100px;
-      border: 3px solid var(--dark);
-    }
-    .fin-cell {
-      padding: 22px 20px; border: 1.5px solid var(--dark);
-      display: flex; flex-direction: column; justify-content: flex-start;
-    }
-    .fin-cell .fc-num {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(28px, 3.5vw, 52px);
-      color: var(--red); line-height: 1; margin-bottom: 8px;
-    }
-    .fin-cell .fc-label {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 10px; letter-spacing: 2px;
-      text-transform: uppercase; font-weight: 600;
-      color: var(--dark); margin-bottom: 6px;
-    }
-    .fin-cell .fc-body {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(11px, 1vw, 13px);
-      line-height: 1.55; color: var(--dark); opacity: 0.8;
-      margin-bottom: 10px;
-    }
-    .fin-cell .fc-micro {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 10px; color: var(--dark); opacity: 0.5;
-      line-height: 1.4; margin-top: auto;
-    }
+    .fin-header { font-family: 'Shrikhand', cursive; font-size: clamp(32px, 5.5vw, 68px); color: var(--dark); margin-bottom: 3vh; line-height: 1; }
+    .fin-grid { display: grid; gap: 0; width: 100%; max-width: 1150px; border: 3px solid var(--dark); }
+    .fin-grid.g3 { grid-template-columns: repeat(3, 1fr); }
+    .fin-grid.g2 { grid-template-columns: repeat(2, 1fr); }
+    .fin-cell { padding: 20px 18px; border: 1.5px solid var(--dark); display: flex; flex-direction: column; justify-content: flex-start; }
+    .fin-cell .fc-num { font-family: 'Shrikhand', cursive; font-size: clamp(24px, 3.2vw, 44px); color: var(--red); line-height: 1; margin-bottom: 8px; }
+    .fin-cell .fc-label { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
+    .fin-cell .fc-body { font-family: 'Libre Baskerville', serif; font-size: clamp(11px, 1vw, 13px); line-height: 1.55; color: var(--dark); opacity: 0.8; margin-bottom: 8px; }
+    .fin-cell .fc-micro { font-family: 'Space Grotesk', sans-serif; font-size: 10px; color: var(--dark); opacity: 0.5; line-height: 1.4; margin-top: auto; }
 
-    /* ---------- SLIDE BIG STAT ---------- */
+    /* STAT */
     .slide-stat { background: var(--bg); justify-content: center; align-items: center; text-align: center; }
-    .stat-big {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(120px, 26vw, 320px);
-      line-height: 0.82; color: var(--red);
-      transform: rotate(-6deg); display: inline-block;
-    }
-    .stat-row {
-      display: flex; gap: 48px; justify-content: center; margin-top: 5vh;
-    }
+    .stat-big { font-family: 'Shrikhand', cursive; font-size: clamp(120px, 26vw, 320px); line-height: 0.82; color: var(--red); transform: rotate(-6deg); display: inline-block; }
+    .stat-row { display: flex; gap: 48px; justify-content: center; margin-top: 5vh; }
     .stat-item { text-align: center; }
-    .stat-item .si-num {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(28px, 4vw, 56px);
-      color: var(--dark); line-height: 1;
-    }
-    .stat-item .si-label {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 10px; letter-spacing: 2px;
-      text-transform: uppercase; font-weight: 600;
-      color: var(--dark); margin-top: 4px;
-    }
-    .stat-context {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(13px, 1.2vw, 16px);
-      color: var(--dark); opacity: 0.7;
-      margin-top: 3vh; max-width: 620px; line-height: 1.6;
-    }
+    .stat-item .si-num { font-family: 'Shrikhand', cursive; font-size: clamp(28px, 4vw, 56px); color: var(--dark); line-height: 1; }
+    .stat-item .si-label { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; color: var(--dark); margin-top: 4px; }
+    .stat-context { font-family: 'Libre Baskerville', serif; font-size: clamp(13px, 1.2vw, 16px); color: var(--dark); opacity: 0.7; margin-top: 3vh; max-width: 620px; line-height: 1.6; }
 
-    /* ---------- SLIDE SERVICES ---------- */
+    /* SERVICES */
     .slide-services { background: var(--bg); justify-content: center; align-items: center; }
-    .svc-header {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(32px, 5vw, 64px);
-      color: var(--dark); line-height: 1; margin-bottom: 3vh;
-    }
-    .svc-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 24px 32px; width: 100%; max-width: 1000px;
-    }
+    .svc-header { font-family: 'Shrikhand', cursive; font-size: clamp(32px, 5vw, 64px); color: var(--dark); line-height: 1; margin-bottom: 3vh; }
+    .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 32px; width: 100%; max-width: 1050px; }
     .svc-card { border-left: 4px solid var(--red); padding-left: 18px; }
-    .svc-card .svc-title {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(22px, 3vw, 36px);
-      line-height: 1.1; color: var(--dark); margin-bottom: 8px;
-    }
-    .svc-card .svc-body {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(12px, 1.1vw, 14px);
-      line-height: 1.6; color: var(--dark); opacity: 0.8;
-      margin-bottom: 10px;
-    }
+    .svc-card .svc-title { font-family: 'Shrikhand', cursive; font-size: clamp(22px, 3vw, 36px); line-height: 1.1; color: var(--dark); margin-bottom: 8px; }
+    .svc-card .svc-body { font-family: 'Libre Baskerville', serif; font-size: clamp(12px, 1.1vw, 14px); line-height: 1.6; color: var(--dark); opacity: 0.8; margin-bottom: 10px; }
     .svc-card .svc-bullets { list-style: none; padding: 0; margin: 0; }
-    .svc-card .svc-bullets li {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(10px, 0.9vw, 12px);
-      line-height: 1.45; color: var(--dark); opacity: 0.7;
-      padding-left: 12px; position: relative; margin-bottom: 3px;
-    }
-    .svc-card .svc-bullets li::before {
-      content: '\2022'; position: absolute; left: 0; color: var(--red);
-    }
+    .svc-card .svc-bullets li { font-family: 'Space Grotesk', sans-serif; font-size: clamp(10px, 0.9vw, 12px); line-height: 1.5; color: var(--dark); opacity: 0.72; padding-left: 12px; position: relative; margin-bottom: 4px; }
+    .svc-card .svc-bullets li::before { content: '\2022'; position: absolute; left: 0; color: var(--red); }
 
-    /* ---------- SLIDE ROADMAP ---------- */
-    .slide-roadmap {
-      background: var(--dark); color: var(--bg);
-      justify-content: center; align-items: center; padding: 40px 48px;
-    }
-    .rm-inner {
-      width: 100%; max-width: 1100px;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 28px 36px;
-    }
+    /* ROADMAP */
+    .slide-roadmap { background: var(--dark); color: var(--bg); justify-content: center; align-items: center; padding: 40px 48px; }
+    .rm-inner { width: 100%; max-width: 1150px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px 32px; }
     .rm-phase { border-left: 3px solid var(--red); padding-left: 16px; }
-    .rm-phase .rm-label {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 9px; letter-spacing: 3px;
-      text-transform: uppercase; font-weight: 600;
-      color: var(--red); margin-bottom: 6px;
-    }
-    .rm-phase .rm-title {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(18px, 2.5vw, 32px);
-      line-height: 1.1; color: var(--bg); margin-bottom: 8px;
-    }
-    .rm-phase .rm-body {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(11px, 1vw, 13px);
-      line-height: 1.6; color: var(--bg); opacity: 0.65;
-      margin-bottom: 10px;
-    }
+    .rm-phase .rm-label { font-family: 'Space Grotesk', sans-serif; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; color: var(--red); margin-bottom: 6px; }
+    .rm-phase .rm-title { font-family: 'Shrikhand', cursive; font-size: clamp(18px, 2.5vw, 32px); line-height: 1.1; color: var(--bg); margin-bottom: 8px; }
+    .rm-phase .rm-body { font-family: 'Libre Baskerville', serif; font-size: clamp(11px, 1vw, 13px); line-height: 1.6; color: var(--bg); opacity: 0.7; margin-bottom: 10px; }
     .rm-phase .rm-bullets { list-style: none; padding: 0; margin: 0; }
-    .rm-phase .rm-bullets li {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(10px, 0.85vw, 11px);
-      line-height: 1.4; color: var(--bg); opacity: 0.5;
-      padding-left: 12px; position: relative; margin-bottom: 3px;
-    }
-    .rm-phase .rm-bullets li::before {
-      content: '\2022'; position: absolute; left: 0; color: var(--red);
-    }
+    .rm-phase .rm-bullets li { font-family: 'Space Grotesk', sans-serif; font-size: clamp(10px, 0.85vw, 11px); line-height: 1.45; color: var(--bg); opacity: 0.55; padding-left: 12px; position: relative; margin-bottom: 3px; }
+    .rm-phase .rm-bullets li::before { content: '\2022'; position: absolute; left: 0; color: var(--red); }
 
-    /* ---------- SLIDE PILLARS ---------- */
+    /* PILLARS */
     .slide-pillars { flex-direction: row; padding: 0; background: var(--bg); }
-    .pillar {
-      flex: 1; display: flex; flex-direction: column;
-      justify-content: flex-start; align-items: flex-start;
-      padding: 28px 22px; text-align: left;
-      border-right: 3px solid var(--dark); position: relative;
-      overflow-y: auto;
-    }
+    .pillar { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; padding: 28px 22px; text-align: left; border-right: 3px solid var(--dark); position: relative; overflow-y: auto; }
     .pillar:last-child { border-right: none; }
     .pillar:nth-child(odd) { background: var(--light); }
-    .pillar .p-num {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(36px, 5vw, 64px);
-      color: var(--red); line-height: 1; margin-bottom: 10px;
-    }
-    .pillar .p-title {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(18px, 2.2vw, 28px);
-      color: var(--dark); line-height: 1.15; margin-bottom: 12px;
-    }
-    .pillar .p-lead {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(12px, 1.1vw, 14px);
-      line-height: 1.6; color: var(--dark); margin-bottom: 12px;
-    }
+    .pillar .p-num { font-family: 'Shrikhand', cursive; font-size: clamp(36px, 5vw, 64px); color: var(--red); line-height: 1; margin-bottom: 10px; }
+    .pillar .p-title { font-family: 'Shrikhand', cursive; font-size: clamp(18px, 2.2vw, 28px); color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
+    .pillar .p-lead { font-family: 'Libre Baskerville', serif; font-size: clamp(12px, 1.1vw, 14px); line-height: 1.6; color: var(--dark); margin-bottom: 12px; }
     .pillar .p-bullets { list-style: none; padding: 0; margin: 0; width: 100%; }
-    .pillar .p-bullets li {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(10px, 0.9vw, 12px);
-      line-height: 1.45; color: var(--dark); opacity: 0.75;
-      padding: 5px 0; border-bottom: 1px solid rgba(28,20,16,0.08);
-    }
+    .pillar .p-bullets li { font-family: 'Space Grotesk', sans-serif; font-size: clamp(10px, 0.9vw, 12px); line-height: 1.45; color: var(--dark); opacity: 0.75; padding: 5px 0; border-bottom: 1px solid rgba(28,20,16,0.08); }
     .pillar .p-bullets li:last-child { border-bottom: none; }
 
-    /* ---------- SLIDE CLOSING ---------- */
-    .slide-close {
-      background: var(--bg); justify-content: center;
-      align-items: center; text-align: center; position: relative;
-    }
-    .close-big {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(80px, 18vw, 260px);
-      line-height: 0.88; color: var(--red);
-      transform: rotate(-5deg); display: inline-block;
-    }
-    .close-sub {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(14px, 1.5vw, 18px);
-      color: var(--dark); margin-top: 4vh; max-width: 620px; line-height: 1.6;
-    }
-    .close-links {
-      margin-top: 5vh; display: flex; gap: 32px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(10px, 0.9vw, 12px);
-      letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
-    }
-    .close-links a {
-      color: var(--dark); text-decoration: none;
-      border-bottom: 2px solid var(--red); padding-bottom: 4px;
-      transition: color 0.3s;
-    }
+    /* CLOSING */
+    .slide-close { background: var(--bg); justify-content: center; align-items: center; text-align: center; position: relative; }
+    .close-big { font-family: 'Shrikhand', cursive; font-size: clamp(80px, 18vw, 260px); line-height: 0.88; color: var(--red); transform: rotate(-5deg); display: inline-block; }
+    .close-sub { font-family: 'Libre Baskerville', serif; font-size: clamp(14px, 1.5vw, 18px); color: var(--dark); margin-top: 4vh; max-width: 620px; line-height: 1.6; }
+    .close-links { margin-top: 5vh; display: flex; gap: 32px; font-family: 'Space Grotesk', sans-serif; font-size: clamp(10px, 0.9vw, 12px); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+    .close-links a { color: var(--dark); text-decoration: none; border-bottom: 2px solid var(--red); padding-bottom: 4px; transition: color 0.3s; }
     .close-links a:hover { color: var(--red); }
 
-    /* ---------- CUSTOM: Image Slides (extending template's design system) ---------- */
+    /* CUSTOM: Image Slides */
     .slide-image-split { padding: 0; flex-direction: row; }
     .slide-image-split.reverse { flex-direction: row-reverse; }
-    .slide-image-split .img-half {
-      flex: 1.2; background-size: cover; background-position: center;
-    }
-    .slide-image-split .text-half {
-      flex: 1; background: var(--bg);
-      padding: 8vh 4vw;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .slide-image-split .day-label {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(10px, 0.9vw, 12px);
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--red); font-weight: 700; margin-bottom: 14px;
-    }
-    .slide-image-split .day-title {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(48px, 7vw, 96px);
-      color: var(--dark); line-height: 0.9; margin-bottom: 3vh;
-    }
-    .slide-image-split .day-body {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(13px, 1.15vw, 15px);
-      line-height: 1.7; color: var(--dark); opacity: 0.85;
-      margin-bottom: 3vh;
-    }
+    .slide-image-split .img-half { flex: 1.2; background-size: cover; background-position: center; }
+    .slide-image-split .text-half { flex: 1; background: var(--bg); padding: 7vh 4vw; display: flex; flex-direction: column; justify-content: center; overflow-y: auto; }
+    .slide-image-split .day-label { font-family: 'Space Grotesk', sans-serif; font-size: clamp(10px, 0.9vw, 12px); letter-spacing: 3px; text-transform: uppercase; color: var(--red); font-weight: 700; margin-bottom: 14px; }
+    .slide-image-split .day-title { font-family: 'Shrikhand', cursive; font-size: clamp(44px, 6.5vw, 88px); color: var(--dark); line-height: 0.9; margin-bottom: 3vh; }
+    .slide-image-split .day-body { font-family: 'Libre Baskerville', serif; font-size: clamp(12px, 1.1vw, 15px); line-height: 1.7; color: var(--dark); opacity: 0.85; margin-bottom: 2.5vh; }
     .slide-image-split .day-bullets { list-style: none; padding: 0; margin: 0; }
-    .slide-image-split .day-bullets li {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(11px, 1vw, 13px);
-      line-height: 1.55; color: var(--dark); opacity: 0.75;
-      padding-left: 16px; position: relative; margin-bottom: 8px;
-    }
-    .slide-image-split .day-bullets li::before {
-      content: '\2014'; position: absolute; left: 0;
-      color: var(--red); font-weight: 700;
-    }
+    .slide-image-split .day-bullets li { font-family: 'Space Grotesk', sans-serif; font-size: clamp(11px, 1vw, 13px); line-height: 1.55; color: var(--dark); opacity: 0.78; padding-left: 16px; position: relative; margin-bottom: 7px; }
+    .slide-image-split .day-bullets li::before { content: '\2014'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
 
     .slide-image-full { padding: 0; position: relative; }
-    .slide-image-full .full-bg {
-      position: absolute; inset: 0;
-      background-size: cover; background-position: center;
-    }
-    .slide-image-full .full-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(28,20,16,0.88) 0%, rgba(28,20,16,0.45) 55%, rgba(28,20,16,0.05) 85%);
-    }
-    .slide-image-full .full-content {
-      position: absolute; bottom: 6vh; left: 5vw; right: 5vw; color: var(--bg);
-    }
-    .slide-image-full .full-label {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(10px, 0.9vw, 13px);
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--red); font-weight: 700; margin-bottom: 2vh;
-    }
-    .slide-image-full .full-title {
-      font-family: 'Shrikhand', cursive;
-      font-size: clamp(56px, 9vw, 128px);
-      color: var(--bg); line-height: 0.9; margin-bottom: 3vh;
-    }
-    .slide-image-full .full-body {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(13px, 1.25vw, 17px);
-      line-height: 1.55; color: var(--bg); opacity: 0.92;
-      max-width: 720px;
-    }
-    .slide-image-full .full-bullets {
-      list-style: none; padding: 0; margin-top: 3vh;
-      display: flex; flex-wrap: wrap; gap: 10px 16px;
-    }
-    .slide-image-full .full-bullets li {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(11px, 1vw, 13px);
-      color: var(--bg); opacity: 0.95;
-      border: 1.5px solid rgba(255,255,255,0.55);
-      padding: 6px 14px; border-radius: 4px; font-weight: 500;
-    }
+    .slide-image-full .full-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+    .slide-image-full .full-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,20,16,0.88) 0%, rgba(28,20,16,0.45) 55%, rgba(28,20,16,0.05) 85%); }
+    .slide-image-full .full-content { position: absolute; bottom: 6vh; left: 5vw; right: 5vw; color: var(--bg); }
+    .slide-image-full .full-label { font-family: 'Space Grotesk', sans-serif; font-size: clamp(10px, 0.9vw, 13px); letter-spacing: 3px; text-transform: uppercase; color: var(--red); font-weight: 700; margin-bottom: 2vh; }
+    .slide-image-full .full-title { font-family: 'Shrikhand', cursive; font-size: clamp(56px, 9vw, 128px); color: var(--bg); line-height: 0.9; margin-bottom: 3vh; }
+    .slide-image-full .full-body { font-family: 'Libre Baskerville', serif; font-size: clamp(13px, 1.2vw, 16px); line-height: 1.6; color: var(--bg); opacity: 0.92; max-width: 720px; }
+    .slide-image-full .full-bullets { list-style: none; padding: 0; margin-top: 3vh; display: flex; flex-wrap: wrap; gap: 10px 14px; }
+    .slide-image-full .full-bullets li { font-family: 'Space Grotesk', sans-serif; font-size: clamp(11px, 1vw, 13px); color: var(--bg); opacity: 0.95; border: 1.5px solid rgba(255,255,255,0.55); padding: 6px 14px; border-radius: 4px; font-weight: 500; }
 
-    .pillar-image {
-      width: 100%; height: 180px;
-      background-size: cover; background-position: center;
-      margin-bottom: 18px;
-      border: 3px solid var(--dark);
-    }
+    .pillar-image { width: 100%; height: 160px; background-size: cover; background-position: center; margin-bottom: 16px; border: 3px solid var(--dark); }
 
-    /* ---------- RESPONSIVE ---------- */
     @media (max-width: 768px) {
-      .slide { padding: 32px 24px; }
+      .slide { padding: 28px 20px; }
       .summary-columns { grid-template-columns: 1fr; gap: 20px; }
       .summary-highlights { grid-template-columns: 1fr; }
-      .fin-grid { grid-template-columns: 1fr 1fr; }
+      .fin-grid.g3 { grid-template-columns: 1fr 1fr; }
+      .fin-grid.g2 { grid-template-columns: 1fr; }
       .svc-grid { grid-template-columns: 1fr; gap: 20px; }
       .rm-inner { grid-template-columns: 1fr; gap: 20px; }
       .slide-pillars { flex-direction: column; }
@@ -477,7 +180,7 @@
       .stat-row { flex-direction: column; gap: 16px; }
       .hero-tagline { position: relative; right: auto; bottom: auto; text-align: left; margin-top: 3vh; max-width: 100%; }
       .slide-image-split, .slide-image-split.reverse { flex-direction: column; padding: 0; }
-      .slide-image-split .img-half { min-height: 42vh; flex: none; }
+      .slide-image-split .img-half { min-height: 40vh; flex: none; }
       .slide-image-split .text-half { padding: 5vh 6vw; flex: none; }
       .slide-image-full .full-title { font-size: clamp(40px, 12vw, 80px); }
       .pillar-image { height: 120px; }
@@ -487,22 +190,22 @@
 <body>
 
   <div class="progress" id="progress"></div>
-  <div class="counter" id="counter">01 / 14</div>
+  <div class="counter" id="counter">01 / 30</div>
   <div class="hint"><span>&#8592;</span> Click / Swipe <span>&#8594;</span></div>
 
   <div class="slides" id="slides">
 
     <!-- 01 HERO -->
     <div class="slide slide-hero active" data-index="0">
-      <div class="hero-meta">2026/07/05 &mdash; 07/11 &mdash; 七日</div>
+      <div class="hero-meta">2026/07/05 &mdash; 07/11 &mdash; 七日 &mdash; 一千三百公里</div>
       <div class="hero-title-group">
         <div class="hero-title">贵州</div>
         <div class="hero-title red">冒险</div>
         <div class="hero-title bottom">七日</div>
       </div>
       <div class="hero-tagline">
-        <div class="tag-label">四男胆大</div>
-        <div class="tag-body">王者段位漂流 · 悬崖咖啡 · 亚洲第一长洞</div>
+        <div class="tag-label">四男胆大 · 完整攻略</div>
+        <div class="tag-body">王者段位漂流 · 悬崖咖啡 · 亚洲第一长洞 · 塞尔达世界</div>
       </div>
     </div>
 
@@ -518,21 +221,17 @@
         <div class="summary-header">这不是常规旅游</div>
         <div class="summary-columns">
           <div class="summary-col">
-            <strong>四个大男</strong>，一辆 SUV，7 天 6 晚 <strong>1300 公里</strong> 贵州腹地。从遵义羊肉粉出发，冲进十二背后 <strong>亚洲第一长洞</strong>，横渡钢索到 100 米悬崖平台喝咖啡。
-            <br><br>
-            全程胆大男自选难度，不玩景点打卡，只玩 <strong>王者段位刺激</strong>：漂流、瀑降、桨板、攀岩、地心徒步、皮划艇进溶洞。
+            <strong>四个大男</strong>，一辆 SUV，7 天 6 晚 <strong>1300 公里</strong> 贵州腹地。从遵义羊肉粉出发，冲进十二背后 <strong>亚洲第一长洞</strong>，横渡钢索到 100 米悬崖平台喝咖啡。全程胆大男自选难度，不玩景点打卡，只玩 <strong>王者段位刺激</strong>：漂流、瀑降、桨板、攀岩、地心徒步、皮划艇进溶洞。
           </div>
           <div class="summary-col">
-            7 天在贵州腹地大转圈，避开黄果树、龙宫、荔波这些游客集散地。我们要的是 <strong>神庙逃亡 / 塞尔达世界</strong> 感的小众地貌：镇远古城的舞阳河、双河洞的悬崖咖啡、铜鼓荡的火星岩石、格凸河的世界最大穹顶。
-            <br><br>
-            住民宿、开租车 SUV、学生票 65 折，全程 <strong>人均 ~¥3000</strong>。学生党最后一次疯狂。
+            7 天在贵州腹地大转圈，避开黄果树、龙宫、荔波这些游客集散地。要 <strong>神庙逃亡 / 塞尔达世界</strong> 感的小众地貌：镇远古城的舞阳河、双河洞的悬崖咖啡、铜鼓荡的火星岩石、格凸河的世界最大穹顶。住民宿、开租车 SUV、学生票 65 折，全程 <strong>人均 ~¥3000</strong>。学生党最后一次疯狂。
           </div>
         </div>
         <div class="summary-highlights">
           <div class="summary-hl">
             <div class="hl-num">1300</div>
             <div class="hl-label">TOTAL KM</div>
-            <div class="hl-body">总里程 · SUV 6 天开车 · 平均 2.8h/天</div>
+            <div class="hl-body">总里程 · SUV 6 天 · 平均 2.8h/天</div>
           </div>
           <div class="summary-hl">
             <div class="hl-num">4男</div>
@@ -548,299 +247,620 @@
       </div>
     </div>
 
-    <!-- 04 BIG STAT -->
+    <!-- 04 BIG STAT 409 -->
     <div class="slide slide-stat" data-index="3">
       <div class="stat-big">409</div>
       <div class="stat-row">
-        <div class="stat-item">
-          <div class="si-num">116m</div>
-          <div class="si-label">格凸河穹顶高</div>
-        </div>
-        <div class="stat-item">
-          <div class="si-num">100m</div>
-          <div class="si-label">悬崖咖啡高度</div>
-        </div>
-        <div class="stat-item">
-          <div class="si-num">30m</div>
-          <div class="si-label">高过河瀑降</div>
-        </div>
+        <div class="stat-item"><div class="si-num">116m</div><div class="si-label">格凸河穹顶高</div></div>
+        <div class="stat-item"><div class="si-num">100m</div><div class="si-label">悬崖咖啡高度</div></div>
+        <div class="stat-item"><div class="si-num">30m</div><div class="si-label">高过河瀑降</div></div>
       </div>
-      <div class="stat-context">
-        双河洞 409.9 公里 &mdash; 亚洲第一、世界第三。相当于把整个台湾岛的南北距离折叠进地下。&mdash; 星球研究所
+      <div class="stat-context">双河洞 409.9 公里 &mdash; 亚洲第一、世界第三。相当于把整个台湾岛的南北距离折叠进地下。&mdash; 星球研究所</div>
+    </div>
+
+    <!-- 05 硬约束 (services) -->
+    <div class="slide slide-services" data-index="4">
+      <div class="svc-header">硬约束 · 不能动</div>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <div class="svc-title">7/13 东莞入职</div>
+          <div class="svc-body">胡同学周一早上入职报到 · 整个行程围绕这个 deadline 倒推。</div>
+          <ul class="svc-bullets"><li>7/12 buffer · 熟悉入职地点</li><li>7/13 早从容出发</li></ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-title">7/11 从贵阳分手</div>
+          <div class="svc-body">4 人玩到 7/11 中午，午饭后各回各家，胡同学高铁去东莞。</div>
+          <ul class="svc-bullets"><li>D7 中午 4 人最后一顿饭</li><li>各自出发不同方向</li></ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-title">4 男胆大 / 1 恐高</div>
+          <div class="svc-body">高刺激项目全上（漂流+攀岩+瀑降），恐高党可自选跳过悬崖项目。</div>
+          <ul class="svc-bullets"><li>王者段位漂流</li><li>100 米悬崖咖啡</li><li>恐高党零压力选项</li></ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-title">想省钱 · 学生党</div>
+          <div class="svc-body">全程人均 ¥3000 目标 · 民宿 + 学生票 65 折 + 4 人拼车拼房。</div>
+          <ul class="svc-bullets"><li>民宿 ¥150/间 (省 ¥100/人)</li><li>紧凑 SUV 300/天</li><li>学生票 65 折</li></ul>
+        </div>
       </div>
     </div>
 
-    <!-- 05 D1 镇远 (image split) -->
-    <div class="slide slide-image-split" data-index="4">
+    <!-- 06 假设 (services) -->
+    <div class="slide slide-services" data-index="5">
+      <div class="svc-header">四个前提假设</div>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <div class="svc-title">01 · 贵阳租紧凑 SUV</div>
+          <div class="svc-body">遵义朋友无车 · 4 人一辆 SUV 全程自驾 6 天。</div>
+          <ul class="svc-bullets"><li>神州/一嗨机场店</li><li>奇骏/逍客/CS75 级</li><li>必买不计免赔险</li></ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-title">02 · 民宿版 6 晚</div>
+          <div class="svc-body">¥150/间 × 2 间 (贵阳 ¥180) · 4 人 AB 房拼，比连锁快捷省 ¥100/人。</div>
+          <ul class="svc-bullets"><li>D1-D2 镇远古城 2 晚</li><li>D3-D4 十二背后 2 晚</li><li>D5 紫云 · D6 贵阳</li></ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-title">03 · D5 打 3 个安顺景点</div>
+          <div class="svc-body">胆大男不砍 · 铜鼓荡+牛倒岩+大圣之眼一日 · 傍晚开去紫云。</div>
+          <ul class="svc-bullets"><li>D5 长车程日 · 早发</li><li>2 人轮流开</li><li>路野注意脚下</li></ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-title">04 · D6 只玩格凸河</div>
+          <div class="svc-body">麝香洞已砍（POI 定位在织金 200km 外，绕不动）· D6 玩完直接返贵阳住。</div>
+          <ul class="svc-bullets"><li>省紫云 D6 一晚 ¥300</li><li>D7 分手位置更方便</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 07 D1 时间线 (roadmap) -->
+    <div class="slide slide-roadmap" data-index="6">
+      <div class="rm-inner">
+        <div class="rm-phase">
+          <div class="rm-label">D1 · 07:30-10:40</div>
+          <div class="rm-title">高铁出发</div>
+          <div class="rm-body">G2837 成都东 07:30 → 贵阳北 10:40 · 3 张 ¥300/张 已订。</div>
+          <ul class="rm-bullets"><li>胡同学 / 郑强 / 杨城浩</li><li>二等座 · 3h10 直达</li><li>遵义朋友同时高铁到贵阳北</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D1 · 11:00-14:30</div>
+          <div class="rm-title">贵阳汇合</div>
+          <div class="rm-body">4 人打车到市区取车+见朋友午饭 · 肠旺面 / 花溪牛肉粉 / 丝娃娃。</div>
+          <ul class="rm-bullets"><li>神州租车机场店取 SUV</li><li>贵阳老城午饭 2h</li><li>顺便见胡同学朋友</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D1 · 15:00-17:30</div>
+          <div class="rm-title">自驾镇远</div>
+          <div class="rm-body">贵阳→镇远古城 218 km / 2h28 · 走贵瓮高速全程高速。</div>
+          <ul class="rm-bullets"><li>2 人轮流开</li><li>中途服务区休整</li><li>17:30 抵古城 check-in</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D1 · 18:00-22:00</div>
+          <div class="rm-title">镇远古城夜游</div>
+          <div class="rm-body">舞阳河夜游 + 祝圣桥 + 8 大牌坊 + 青龙洞 + 酸汤鱼晚饭。</div>
+          <ul class="rm-bullets"><li>舞阳河乌篷船 ¥30</li><li>酸汤鱼 ¥60/人</li><li>22:00 早睡准备 D2</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 D1 镇远古城 image -->
+    <div class="slide slide-image-split" data-index="7">
       <div class="img-half" style="background-image: url('./images/d1-zhenyuan2.JPG');"></div>
       <div class="text-half">
-        <div class="day-label">Day 01 &mdash; 7月5日 周日</div>
-        <div class="day-title">集结镇远</div>
+        <div class="day-label">Day 01 &mdash; 7月5日 周日 &mdash; 集结</div>
+        <div class="day-title">镇远古城</div>
         <div class="day-body">
-          07:30 G2837 成都东出发 → 10:40 抵贵阳北 → 见朋友午饭 → 15:00 出发 → 17:30 抵镇远。舞阳河夜游 + 祝圣桥 + 8 大牌坊 + 苗家酸汤鱼。
+          国家历史文化名城 · 2000+ 年历史。舞阳河穿城 S 形而过，古城依山傍水，明清时期南方水路枢纽。晚上灯光亮起，苗侗汉文化融合的城市夜景 —— 免费开放，随意穿行。
         </div>
         <ul class="day-bullets">
-          <li>贵阳→镇远 · 218 km / 2h28</li>
-          <li>舞阳河夜游 · 乌篷船 or 岸边灯光</li>
-          <li>晚饭 · 镇远酸汤鱼 · ¥60/人</li>
-          <li>民宿 · 古城内 · ¥150/间 × 2</li>
+          <li>门票 · 免费开放</li>
+          <li>舞阳河夜游乌篷船 · ¥30/人</li>
+          <li>祝圣桥 · 青龙洞古建群</li>
+          <li>8 大牌坊 · 明清古街</li>
+          <li>晚饭 · 苗家酸汤鱼 · ¥60/人</li>
+          <li>住宿 · 古城内民宿 ¥150/间 × 2</li>
         </ul>
       </div>
     </div>
 
-    <!-- 06 D2 高过河 王牌 -->
-    <div class="slide slide-image-full" data-index="5">
+    <!-- 09 D2 时间线 -->
+    <div class="slide slide-roadmap" data-index="8">
+      <div class="rm-inner">
+        <div class="rm-phase">
+          <div class="rm-label">D2 · 07:00-08:40</div>
+          <div class="rm-title">早饭 · 出发</div>
+          <div class="rm-body">早起 + 早饭 + 装备 · 08:00 自驾镇远→高过河景区 30 km / 40 min。</div>
+          <ul class="rm-bullets"><li>必备凉鞋 (不是拖鞋！)</li><li>防水袋装手机</li><li>速干衣裤 · 防晒霜</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D2 · 09:30-12:00</div>
+          <div class="rm-title">王者段位漂流</div>
+          <div class="rm-body">激流白水漂流 · 2.5 小时 · 教练带 · 全套装备 + 保险。8.3 万赞小红书评论区实测。</div>
+          <ul class="rm-bullets"><li>穿救生衣 + 头盔</li><li>皱眉流 / 翻滚流</li><li>会翻船 · 会浸水</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D2 · 13:30-15:30</div>
+          <div class="rm-title">30 米瀑降</div>
+          <div class="rm-body">悬崖速降 2h · 30 米悬崖水面直下 · 安全绳保护 · 教练带下降。</div>
+          <ul class="rm-bullets"><li>景区午饭 12:00-13:00</li><li>下降体验刺激</li><li>装备重复利用</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D2 · 15:30-22:00</div>
+          <div class="rm-title">桨板 · 返程</div>
+          <div class="rm-body">桨板 1.5h · 平缓河段 · 收拾装备后返镇远古城冲澡 + 晚饭 + 早睡。</div>
+          <ul class="rm-bullets"><li>桨板站立划水</li><li>17:30 返镇远</li><li>21:00 早睡</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 D2 高过河 王牌 -->
+    <div class="slide slide-image-full" data-index="9">
       <div class="full-bg" style="background-image: url('./images/d2-rafting.JPG');"></div>
       <div class="full-overlay"></div>
       <div class="full-content">
-        <div class="full-label">Day 02 · 7月6日 · 一日狂欢</div>
+        <div class="full-label">Day 02 · 7月6日 周一 · 一日狂欢</div>
         <div class="full-title">高过河</div>
         <div class="full-body">
-          漂流王者段位 + 30m 悬崖速降 + 桨板 · 一天玩完贵州段位最高刺激三合一。8.3 万赞小红书评论区实测 "从船翻到心跳过山车"。胆大男版本首推。
+          漂流王者段位 + 30m 悬崖速降 + 桨板 · 一天玩完贵州段位最高刺激三合一。8.3 万赞小红书评论区实测 "从船翻到心跳过山车" · 胆大男版本首推。含教练 + 全套装备 + 项目保险。
         </div>
         <ul class="full-bullets">
-          <li>09:30 漂流</li>
-          <li>13:30 瀑降</li>
-          <li>15:30 桨板</li>
-          <li>套餐 ¥400/人</li>
+          <li>09:30 漂流</li><li>13:30 瀑降</li><li>15:30 桨板</li><li>套餐 ¥400/人</li><li>装备景区提供</li>
         </ul>
       </div>
     </div>
 
-    <!-- 07 D3 双河洞入门 -->
-    <div class="slide slide-image-split reverse" data-index="6">
+    <!-- 11 D3 时间线 -->
+    <div class="slide slide-roadmap" data-index="10">
+      <div class="rm-inner">
+        <div class="rm-phase">
+          <div class="rm-label">D3 · 07:30-10:40</div>
+          <div class="rm-title">高过河→遵义</div>
+          <div class="rm-body">早饭起身 · 08:00 出发 · 高过河→遵义 224 km / 2h38 · 全程高速。</div>
+          <ul class="rm-bullets"><li>2 人轮流开</li><li>10:40 抵遵义</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D3 · 11:00-12:30</div>
+          <div class="rm-title">遵义羊肉粉</div>
+          <div class="rm-body">正宗虾子羊肉粉 · 遵义招牌美食 · 顺便加满油。</div>
+          <ul class="rm-bullets"><li>羊肉粉 ¥30/人</li><li>加油 · 加满</li><li>不进遵义会议会址</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D3 · 12:30-15:00</div>
+          <div class="rm-title">遵义→双河洞</div>
+          <div class="rm-body">遵义→十二背后景区 94 km / 1h25 · 山路进入喀斯特腹地。</div>
+          <ul class="rm-bullets"><li>15:00 抵地下裂缝景区</li><li>民宿 check-in</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D3 · 15:30-21:00</div>
+          <div class="rm-title">观光段徒步</div>
+          <div class="rm-body">溶洞观光段 2.5h · 走地面无高度 · 全员轻松 · 洞内 15℃ 恒温备薄外套。</div>
+          <ul class="rm-bullets"><li>门票 ¥118 (学生 ¥59)</li><li>头灯景区提供</li><li>19:30 晚饭 + 星空</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12 D3 双河洞观光段 image -->
+    <div class="slide slide-image-split reverse" data-index="11">
       <div class="text-half">
-        <div class="day-label">Day 03 &mdash; 7月7日 周二</div>
-        <div class="day-title">转场 · 双河洞入门</div>
+        <div class="day-label">Day 03 &mdash; 7月7日 周二 &mdash; 转场 · 入门</div>
+        <div class="day-title">双河洞观光</div>
         <div class="day-body">
-          08:00 高过河出发 → 11:00 遵义羊肉粉 → 13:30 出发双河洞 → 15:00 抵十二背后 · 观光段徒步 2.5h · 走溶洞地面无高度，全员轻松，看喀斯特奇观。
+          十二背后景区 · 亚洲第一 · 世界第三长洞（409.9 km）· 观光段全程步道 2.5 小时 · 走溶洞地面无高度 · 全员轻松 · 看喀斯特钟乳石 + 地下暗河。为 D4 悬崖咖啡王牌项目热身。
         </div>
         <ul class="day-bullets">
-          <li>高过河→遵义 · 224 km / 2h38</li>
-          <li>遵义羊肉粉 · 正宗虾子牌招牌</li>
-          <li>观光段徒步 · ¥118 门票</li>
+          <li>门票 · ¥118（学生半价 ¥59）</li>
           <li>洞内恒温 15℃ · 备薄外套</li>
+          <li>头灯 · 景区提供</li>
+          <li>无高度 · 全员轻松</li>
+          <li>晚饭 · 景区内餐厅</li>
+          <li>连住 2 晚民宿 ¥150/间 × 2</li>
         </ul>
       </div>
-      <div class="img-half" style="background-image: url('./images/d3-shuanghe3.JPG');"></div>
+      <div class="img-half" style="background-image: url('./images/d3-shuanghe4.JPG');"></div>
     </div>
 
-    <!-- 08 D4 悬崖咖啡 王牌 -->
-    <div class="slide slide-image-full" data-index="7">
+    <!-- 13 D4 时间线 -->
+    <div class="slide slide-roadmap" data-index="12">
+      <div class="rm-inner">
+        <div class="rm-phase">
+          <div class="rm-label">D4 · 07:00-08:00</div>
+          <div class="rm-title">起身准备</div>
+          <div class="rm-body">早饭 + 装备 · 户外鞋 + 手套（悬崖咖啡横渡钢索用）· 系好安全绳。</div>
+          <ul class="rm-bullets"><li>装备景区提供</li><li>手套自备</li><li>穿舒适户外鞋</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D4 · 08:00-12:00</div>
+          <div class="rm-title">悬崖咖啡 4h</div>
+          <div class="rm-body">徒步穿越地下河谷 · 横渡钢索 30 米 · 攀岩上 100 米悬崖平台 · 平台上咖啡。教练 1v4-6 全程带。</div>
+          <ul class="rm-bullets"><li>08:00 横渡钢索</li><li>10:00 悬崖攀岩</li><li>11:30 平台喝咖啡</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D4 · 12:00-17:30</div>
+          <div class="rm-title">午饭 · 自由</div>
+          <div class="rm-body">午饭后可选走溶洞其他步道 or 民宿闲逛。飞拉达已砍（-¥400 恐高党零压力）。</div>
+          <ul class="rm-bullets"><li>13:30-16:30 自由活动</li><li>冲澡 17:30</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D4 · 18:00-21:00</div>
+          <div class="rm-title">晚饭 · 早睡</div>
+          <div class="rm-body">晚饭 + 复盘今日体验拍照分享 · 早睡 · D5 6:30 起最长车程日。</div>
+          <ul class="rm-bullets"><li>晚饭 · 景区餐</li><li>20:00 早睡</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14 D4 悬崖咖啡 王牌 -->
+    <div class="slide slide-image-full" data-index="13">
       <div class="full-bg" style="background-image: url('./images/d4-cliff-coffee.JPG');"></div>
       <div class="full-overlay"></div>
       <div class="full-content">
-        <div class="full-label">Day 04 · 7月8日 · 双河洞王牌</div>
+        <div class="full-label">Day 04 · 7月8日 周三 · 双河洞王牌</div>
         <div class="full-title">悬崖咖啡</div>
         <div class="full-body">
-          横渡钢索 + 攀岩上 100 米悬崖平台 + 悬崖上喝咖啡。王一博打卡项目 · 4 小时全程有教练带 + 全套装备 + 保险 · 恐高党可只走观光段。
+          横渡 30 米钢索 + 攀岩上 100 米悬崖平台 + 悬崖上喝咖啡。王一博打卡项目 · 4 小时全程有教练带 · 全套装备 + 项目保险 · 恐高党可只走观光段。500 元买的不是咖啡，是"在 100 米悬崖上喝咖啡"的极限体验入场券。
         </div>
         <ul class="full-bullets">
-          <li>08:00 横渡钢索</li>
-          <li>10:00 悬崖攀岩</li>
-          <li>11:30 平台咖啡</li>
-          <li>¥500/人</li>
+          <li>08:00 横渡钢索</li><li>10:00 悬崖攀岩</li><li>11:30 平台咖啡</li><li>¥500/人</li><li>教练 1v4</li>
         </ul>
       </div>
     </div>
 
-    <!-- 09 D5 三连击 -->
-    <div class="slide slide-pillars" data-index="8">
+    <!-- 15 D5 时间线 -->
+    <div class="slide slide-roadmap" data-index="14">
+      <div class="rm-inner">
+        <div class="rm-phase">
+          <div class="rm-label">D5 · 06:30-11:40</div>
+          <div class="rm-title">长车程日</div>
+          <div class="rm-body">早发 6:30 · 双河洞→安顺铜鼓荡 351 km / 4h37 · 全程最长车程 · 2 人轮流开。</div>
+          <ul class="rm-bullets"><li>6:30 起 · 7:00 出发</li><li>中途服务区休整</li><li>11:40 抵铜鼓荡</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D5 · 12:00-15:00</div>
+          <div class="rm-title">铜鼓荡 · 火星岩石</div>
+          <div class="rm-body">午饭后徒步 2h · 遍地形状奇特岩石 · 免费无门票 · 拍照打卡。</div>
+          <ul class="rm-bullets"><li>免费</li><li>2 小时徒步</li><li>火星表面 vibe</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D5 · 15:00-19:00</div>
+          <div class="rm-title">牛倒岩 + 大圣之眼</div>
+          <div class="rm-body">牛倒岩塞尔达世界石林 2h · 大圣之眼手脚并用攀爬 2h · 都免费。</div>
+          <ul class="rm-bullets"><li>大圣之眼路野注意</li><li>19:00 简餐</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D5 · 19:30-22:10</div>
+          <div class="rm-title">开去紫云</div>
+          <div class="rm-body">安顺→紫云县 158 km / 2h40 · 22:10 抵紫云县城 check-in。</div>
+          <ul class="rm-bullets"><li>民宿 ¥150/间</li><li>22:30 早睡</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 16 D5 三连击 pillars -->
+    <div class="slide slide-pillars" data-index="15">
       <div class="pillar">
         <div class="pillar-image" style="background-image: url('./images/d5-tongguya.JPG');"></div>
         <div class="p-num">01</div>
         <div class="p-title">铜鼓荡</div>
-        <div class="p-lead">"火星表面" · 遍地形状奇特岩石，仿佛外星球。</div>
+        <div class="p-lead">"火星表面" · 遍地奇岩，仿佛外星球。</div>
         <ul class="p-bullets">
           <li>2 小时徒步</li>
           <li>免费无门票</li>
           <li>安顺市郊 · 贵阳自驾 1h</li>
-          <li>网红打卡点 · 拍照必去</li>
+          <li>李宁户外拍摄地</li>
+          <li>网红打卡必去</li>
         </ul>
       </div>
       <div class="pillar">
         <div class="pillar-image" style="background-image: url('./images/d5-niudaoyan.JPG');"></div>
         <div class="p-num">02</div>
         <div class="p-title">牛倒岩</div>
-        <div class="p-lead">现实版塞尔达世界 · 石林景观，仿佛穿越游戏。</div>
+        <div class="p-lead">现实版塞尔达世界 · 石林景观穿越游戏。</div>
         <ul class="p-bullets">
           <li>2 小时徒步</li>
           <li>免费</li>
           <li>周末拍照排队</li>
-          <li>路线成熟 · 导航搜地名直达</li>
+          <li>路线成熟</li>
+          <li>导航搜地名直达</li>
         </ul>
       </div>
       <div class="pillar">
         <div class="pillar-image" style="background-image: url('./images/d5-dasheng.JPG');"></div>
         <div class="p-num">03</div>
         <div class="p-title">大圣之眼</div>
-        <div class="p-lead">手脚并用攀爬 · 胆大男专属，鬼斧神工岩石。</div>
+        <div class="p-lead">手脚并用攀爬 · 胆大男专属鬼斧神工。</div>
         <ul class="p-bullets">
           <li>2 小时冒险</li>
           <li>免费</li>
           <li>⚠️ 路野注意脚下</li>
           <li>D5 最刺激站</li>
+          <li>穿户外鞋</li>
         </ul>
       </div>
     </div>
 
-    <!-- 10 D6 格凸河 -->
-    <div class="slide slide-image-full" data-index="9">
+    <!-- 17 D6 时间线 -->
+    <div class="slide slide-roadmap" data-index="16">
+      <div class="rm-inner">
+        <div class="rm-phase">
+          <div class="rm-label">D6 · 07:30-09:30</div>
+          <div class="rm-title">出发格凸河</div>
+          <div class="rm-body">早饭起 · 08:30 出发格凸河 74 km / 1h44 · 09:30 抵景区。</div>
+          <ul class="rm-bullets"><li>头灯 · 皮划艇溶洞用</li><li>防水袋</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D6 · 09:30-13:30</div>
+          <div class="rm-title">穹顶徒步 + 燕子洞</div>
+          <div class="rm-body">116 米高穹顶溶洞徒步 + 燕子洞 · 世界最大溶洞穹顶之一 · 景区午饭。</div>
+          <ul class="rm-bullets"><li>门票 ¥100 (学生 ¥50)</li><li>不看蜘蛛人表演</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D6 · 13:30-16:00</div>
+          <div class="rm-title">皮划艇进溶洞</div>
+          <div class="rm-body">皮划艇进暗河 · 钟乳石 + 头灯 · 恐高党零压力 · 15:30 皮划艇结束。</div>
+          <ul class="rm-bullets"><li>装备景区租</li><li>暗河体验独特</li></ul>
+        </div>
+        <div class="rm-phase">
+          <div class="rm-label">D6 · 16:00-21:00</div>
+          <div class="rm-title">返贵阳</div>
+          <div class="rm-body">格凸河→贵阳 177 km / 2h25 · 18:30 抵贵阳民宿 · 夜宵老城逛。</div>
+          <ul class="rm-bullets"><li>民宿近北站 ¥180/间</li><li>糯米饭 / 豆腐圆子 / 丝娃娃</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 18 D6 格凸河 image -->
+    <div class="slide slide-image-full" data-index="17">
       <div class="full-bg" style="background-image: url('./images/d6-getuhe.JPG');"></div>
       <div class="full-overlay"></div>
       <div class="full-content">
-        <div class="full-label">Day 06 · 7月10日 · 紫云县</div>
+        <div class="full-label">Day 06 · 7月10日 周五 · 紫云县</div>
         <div class="full-title">格凸河</div>
         <div class="full-body">
-          116 米高穹顶溶洞 · 世界最大溶洞穹顶之一 · 皮划艇进暗河 + 头灯 + 钟乳石。恐高党零压力。晚上返贵阳过夜为 D7 分手做准备。
+          116 米高穹顶溶洞 · 世界最大溶洞穹顶之一 · 皮划艇进暗河 + 头灯 + 钟乳石 · 恐高党零压力。国家地理评为国内最美地方之一。晚上返贵阳过夜为 D7 分手做准备。
         </div>
         <ul class="full-bullets">
-          <li>09:30 穹顶徒步</li>
-          <li>13:30 皮划艇进洞</li>
-          <li>16:00 返贵阳</li>
-          <li>¥100 门票 (学生半价)</li>
+          <li>09:30 穹顶徒步</li><li>13:30 皮划艇进洞</li><li>16:00 返贵阳</li><li>¥100 (学生 ¥50)</li>
         </ul>
       </div>
     </div>
 
-    <!-- 11 D7 分手 -->
-    <div class="slide slide-roadmap" data-index="10">
+    <!-- 19 D7 分手安排 -->
+    <div class="slide slide-roadmap" data-index="18">
       <div class="rm-inner">
         <div class="rm-phase">
-          <div class="rm-label">Day 07 &mdash; 7月11日 · 分手一</div>
+          <div class="rm-label">D7 &mdash; 07月11日 周六 &mdash; 分手一</div>
           <div class="rm-title">胡同学 &rarr; 东莞入职</div>
-          <div class="rm-body">15:09 G2945 贵阳北 → 19:24 虎门。打车到东莞市区，入职单位酒店 7/12 12:00 之后入住，7/11 晚外面订 1 晚。</div>
-          <ul class="rm-bullets">
-            <li>G2945 · 4h15 直达</li>
-            <li>虎门→东莞 · 30km · 30-40 min</li>
-            <li>7/12 buffer · 7/13 早入职</li>
-          </ul>
+          <div class="rm-body">15:09 G2945 贵阳北 → 19:24 虎门 · 打车/地铁到东莞市区 30km · 7/11 晚外面订 1 晚酒店 · 7/12 12:00 后入职方安排的住处 · 7/13 早入职。</div>
+          <ul class="rm-bullets"><li>G2945 · 4h15 直达</li><li>虎门→东莞 30-40 min</li><li>7/12 buffer 一天</li></ul>
         </div>
         <div class="rm-phase">
-          <div class="rm-label">Day 07 · 分手二</div>
+          <div class="rm-label">D7 · 分手二</div>
           <div class="rm-title">郑强 & 杨城浩 &rarr; 回成都</div>
-          <div class="rm-body">CA2560 贵阳→成都 17:55 or 高铁。1 小时回家。</div>
-          <ul class="rm-bullets">
-            <li>飞机 ¥240</li>
-            <li>高铁类似价</li>
-            <li>当晚睡自家床</li>
-          </ul>
+          <div class="rm-body">CA2560 贵阳→成都 17:55 (¥240) or 高铁 · 1 小时回家 · 当晚睡自家床。</div>
+          <ul class="rm-bullets"><li>飞机 ¥240</li><li>高铁类似</li><li>当晚到家</li></ul>
         </div>
         <div class="rm-phase">
-          <div class="rm-label">Day 07 · 分手三</div>
+          <div class="rm-label">D7 · 分手三</div>
           <div class="rm-title">遵义朋友 &rarr; 回遵义</div>
-          <div class="rm-body">高铁贵阳北→遵义 1h ¥65。当晚睡自家床。</div>
-          <ul class="rm-bullets">
-            <li>贵阳北→遵义 · 1h</li>
-            <li>¥65 高铁二等座</li>
-            <li>最省心那位</li>
-          </ul>
+          <div class="rm-body">高铁贵阳北→遵义 1h ¥65 · 最省心那位 · 睡自家床。</div>
+          <ul class="rm-bullets"><li>贵阳北→遵义 1h</li><li>¥65 二等座</li><li>最快到家</li></ul>
         </div>
         <div class="rm-phase">
-          <div class="rm-label">分手前收尾</div>
-          <div class="rm-title">SUV 还车</div>
-          <div class="rm-body">11:30-13:00 4 人贵阳最后一顿饭：老凯里酸汤鱼 or 杨姐大排档丝娃娃。饭前还车到机场店。</div>
-          <ul class="rm-bullets">
-            <li>加满油还</li>
-            <li>先绕停车场查划痕</li>
-            <li>不计免赔险已买 · 不虚</li>
-          </ul>
+          <div class="rm-label">D7 · 收尾</div>
+          <div class="rm-title">SUV 还车 · 最后一顿</div>
+          <div class="rm-body">11:30-13:00 4 人贵阳最后一顿：老凯里酸汤鱼 or 杨姐大排档丝娃娃。饭前先还车到机场店。</div>
+          <ul class="rm-bullets"><li>加满油还</li><li>先绕停车场查划痕</li><li>不计免赔险已买</li></ul>
         </div>
       </div>
     </div>
 
-    <!-- 12 预算 -->
-    <div class="slide slide-financial" data-index="11">
-      <div class="fin-header">人均预算 · 压缩版</div>
-      <div class="fin-grid">
-        <div class="fin-cell">
-          <div class="fc-num">¥300</div>
-          <div class="fc-label">G2837 高铁 · 成都→贵阳</div>
-          <div class="fc-body">已订 · 3 张 · ¥300/张 · 07:30 早班二等座</div>
-          <div class="fc-micro">胡同学统一订完 ✅</div>
+    <!-- 20 交通详情 -->
+    <div class="slide slide-financial" data-index="19">
+      <div class="fin-header">交通详情 · amap 实时</div>
+      <div class="fin-grid g3">
+        <div class="fin-cell"><div class="fc-num">¥300</div><div class="fc-label">G2837 高铁</div><div class="fc-body">成都东 07:30 → 贵阳北 10:40 · 3h10 · 3 张已订。</div><div class="fc-micro">D1 · 胡同学统一订</div></div>
+        <div class="fin-cell"><div class="fc-num">218km</div><div class="fc-label">贵阳→镇远</div><div class="fc-body">2h28 · 全程高速 · 走贵瓮高速。</div><div class="fc-micro">D1 下午 15:00 出发</div></div>
+        <div class="fin-cell"><div class="fc-num">30km</div><div class="fc-label">镇远→高过河</div><div class="fc-body">40 min · 山路 · D2 早发。</div><div class="fc-micro">D2 · 08:00 出发</div></div>
+        <div class="fin-cell"><div class="fc-num">224km</div><div class="fc-label">高过河→遵义</div><div class="fc-body">2h38 · 全程高速。</div><div class="fc-micro">D3 · 08:00 出发</div></div>
+        <div class="fin-cell"><div class="fc-num">94km</div><div class="fc-label">遵义→双河洞</div><div class="fc-body">1h25 · 山路 · 进喀斯特腹地。</div><div class="fc-micro">D3 · 12:30 出发</div></div>
+        <div class="fin-cell"><div class="fc-num">351km</div><div class="fc-label">双河洞→铜鼓荡</div><div class="fc-body">4h37 · ⚠️ 最长车程日 · 早发 2 人轮开。</div><div class="fc-micro">D5 · 07:00 出发</div></div>
+        <div class="fin-cell"><div class="fc-num">158km</div><div class="fc-label">铜鼓荡→紫云</div><div class="fc-body">2h40 · 山路 · 傍晚出发。</div><div class="fc-micro">D5 · 19:30 出发</div></div>
+        <div class="fin-cell"><div class="fc-num">74km</div><div class="fc-label">紫云→格凸河</div><div class="fc-body">1h44 · D6 早发。</div><div class="fc-micro">D6 · 08:30 出发</div></div>
+        <div class="fin-cell"><div class="fc-num">177km</div><div class="fc-label">格凸河→贵阳</div><div class="fc-body">2h25 · 返程 · D6 晚上到贵阳。</div><div class="fc-micro">D6 · 16:00 出发</div></div>
+      </div>
+    </div>
+
+    <!-- 21 租车方案 -->
+    <div class="slide slide-services" data-index="20">
+      <div class="svc-header">贵阳租紧凑 SUV · 遵义朋友订</div>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <div class="svc-title">平台</div>
+          <div class="svc-body">4 大平台任选 · App 内比价 · 都可以取还车。</div>
+          <ul class="svc-bullets"><li>神州租车</li><li>一嗨</li><li>悟空租车</li><li>携程租车 App</li></ul>
         </div>
-        <div class="fin-cell">
-          <div class="fc-num">¥800</div>
-          <div class="fc-label">紧凑 SUV 6 天分摊</div>
-          <div class="fc-body">300/天 × 6 + 油 700 + 过路 400 + 保险 200 = ¥3200 / 4 人</div>
-          <div class="fc-micro">遵义朋友订 · 神州/一嗨</div>
+        <div class="svc-card">
+          <div class="svc-title">车型</div>
+          <div class="svc-body">紧凑 SUV · 4 男 + 行李装得下 · 压缩预算版。</div>
+          <ul class="svc-bullets"><li>奇骏</li><li>逍客</li><li>途岳</li><li>长安 CS75</li></ul>
         </div>
-        <div class="fin-cell">
-          <div class="fc-num">¥350</div>
-          <div class="fc-label">6 晚民宿分摊</div>
-          <div class="fc-body">¥150/间 × 6 晚 ÷ 2 · 镇远 / 双河洞 / 紫云 / 贵阳</div>
-          <div class="fc-micro">郑强 4 晚 · 杨城浩 2 晚</div>
+        <div class="svc-card">
+          <div class="svc-title">成本</div>
+          <div class="svc-body">300/天 × 6 + 油 700 + 过路 400 + 保险 200 = ¥3200 total / 4 人 = ¥800/人。</div>
+          <ul class="svc-bullets"><li>6 天租金 ¥1800</li><li>油费 ¥700</li><li>过路 ¥400 · 保险 ¥200</li></ul>
         </div>
-        <div class="fin-cell">
-          <div class="fc-num">¥400</div>
-          <div class="fc-label">高过河一站式套餐</div>
-          <div class="fc-body">漂流 + 瀑降 + 桨板 打包价 · 现场签风险知情书</div>
-          <div class="fc-micro">美团/大众点评订</div>
-        </div>
-        <div class="fin-cell">
-          <div class="fc-num">¥500</div>
-          <div class="fc-label">悬崖咖啡 · 王牌</div>
-          <div class="fc-body">100 米悬崖平台 + 教练 + 装备 + 保险 · 王一博打卡同款</div>
-          <div class="fc-micro">遵义朋友订</div>
-        </div>
-        <div class="fin-cell">
-          <div class="fc-num">¥3025</div>
-          <div class="fc-label">郑强 / 杨城浩 · 学生版总</div>
-          <div class="fc-body">65 折学生票 + 民宿 + 4 男拼房 · 达标 ¥3000 目标 ✅</div>
-          <div class="fc-micro">胡同学 ¥3205 (G2945 长)</div>
+        <div class="svc-card">
+          <div class="svc-title">注意</div>
+          <div class="svc-body">机场店取还车最方便 · 暑假旺季提前订 · 至少 1 人 2 年+驾龄。</div>
+          <ul class="svc-bullets"><li>不计免赔险必买</li><li>2 人轮流开</li><li>贵阳龙洞堡机场店</li><li>异地还车不适用</li></ul>
         </div>
       </div>
     </div>
 
-    <!-- 13 分工 -->
-    <div class="slide slide-services" data-index="12">
-      <div class="svc-header">四人分工 · 7月4日前搞定</div>
+    <!-- 22 住宿方案 -->
+    <div class="slide slide-financial" data-index="21">
+      <div class="fin-header">住宿 · 6 晚民宿版</div>
+      <div class="fin-grid g3">
+        <div class="fin-cell"><div class="fc-num">D1-D2</div><div class="fc-label">镇远古城</div><div class="fc-body">连住 2 晚 · 古城内民宿 · 步行舞阳河。</div><div class="fc-micro">¥150/间 × 2 · 郑强订</div></div>
+        <div class="fin-cell"><div class="fc-num">D3-D4</div><div class="fc-label">十二背后景区</div><div class="fc-body">连住 2 晚 · 景区民宿 · 星空 + 无光污染。</div><div class="fc-micro">¥150/间 × 2 · 郑强订</div></div>
+        <div class="fin-cell"><div class="fc-num">D5</div><div class="fc-label">紫云县城</div><div class="fc-body">1 晚 · 22:10 到 · 早睡 D6 早发。</div><div class="fc-micro">¥150/间 × 2 · 杨城浩订</div></div>
+        <div class="fin-cell"><div class="fc-num">D6</div><div class="fc-label">贵阳 · 近北站</div><div class="fc-body">1 晚 · D7 早从容出发 · 夜宵老城逛。</div><div class="fc-micro">¥180/间 × 2 · 杨城浩订</div></div>
+        <div class="fin-cell"><div class="fc-num">D7</div><div class="fc-label">胡同学 · 东莞外面</div><div class="fc-body">1 晚 · 7/12 12:00 前 check-out 转入职方住处。</div><div class="fc-micro">¥200 · 胡同学订</div></div>
+        <div class="fin-cell"><div class="fc-num">¥350</div><div class="fc-label">6 晚住宿分摊 · 人均</div><div class="fc-body">150/间 × 6 ÷ 2 · 民宿版比连锁省 ¥100/人。</div><div class="fc-micro">4 男 AB 房拼</div></div>
+      </div>
+    </div>
+
+    <!-- 23 装备清单 -->
+    <div class="slide slide-services" data-index="22">
+      <div class="svc-header">装备清单 · 分场景</div>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <div class="svc-title">通用 · 4 人都要</div>
+          <div class="svc-body">证件 + 电子 + 现金 · 缺一不可。</div>
+          <ul class="svc-bullets"><li>身份证 + 学生证 (半价关键)</li><li>驾照 (开车的人)</li><li>现金 ¥300-500</li><li>充电宝 + 数据线</li><li>保温杯</li></ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-title">D2 高过河 · 玩水</div>
+          <div class="svc-body">凉鞋是刚需 · 拖鞋景区不让进 · 装备景区提供剩下自备。</div>
+          <ul class="svc-bullets"><li>凉鞋 (不是拖鞋！)</li><li>防水袋装手机</li><li>速干衣裤</li><li>防晒霜 SPF50+</li><li>墨镜 + 帽子</li></ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-title">D4 悬崖咖啡 · 攀岩</div>
+          <div class="svc-body">户外鞋 + 手套 · 景区提供绳索安全绳头盔。</div>
+          <ul class="svc-bullets"><li>户外鞋 · 防滑</li><li>手套 (横渡钢索用)</li><li>长袖速干</li><li>装备景区提供</li></ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-title">D3 / D6 溶洞 · 15℃</div>
+          <div class="svc-body">溶洞内温度 15℃ 恒温 · 湿度高 · 备薄外套 + 头灯。</div>
+          <ul class="svc-bullets"><li>薄外套 · 洞内偏凉</li><li>头灯 (皮划艇溶洞用)</li><li>防水袋</li><li>换洗内衣</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 24 门票 & 项目预订 checklist -->
+    <div class="slide slide-financial" data-index="23">
+      <div class="fin-header">门票 & 项目预订 · 7/4 前</div>
+      <div class="fin-grid g3">
+        <div class="fin-cell"><div class="fc-num">¥400</div><div class="fc-label">高过河一站式</div><div class="fc-body">漂流 + 瀑降 + 桨板打包价 · 有名额提前订。</div><div class="fc-micro">美团/大众点评 · 遵义朋友订</div></div>
+        <div class="fin-cell"><div class="fc-num">¥118</div><div class="fc-label">双河洞观光</div><div class="fc-body">学生半价 ¥59 · 现场买即可。</div><div class="fc-micro">D3 现场买 · 带学生证</div></div>
+        <div class="fin-cell"><div class="fc-num">¥500</div><div class="fc-label">双河洞悬崖咖啡</div><div class="fc-body">4h 王牌项目 · 名额限制 · 越早订越好。</div><div class="fc-micro">美团/大众点评 · 遵义朋友订</div></div>
+        <div class="fin-cell"><div class="fc-num">¥100</div><div class="fc-label">格凸河</div><div class="fc-body">学生半价 ¥50 · 现场买。皮划艇租另计 ~¥50。</div><div class="fc-micro">D6 现场买</div></div>
+        <div class="fin-cell"><div class="fc-num">¥30</div><div class="fc-label">意外险 · 每人</div><div class="fc-body">漂流+瀑降+攀岩必买 · 月度综合意外险 · 微信搜。</div><div class="fc-micro">每人各订 · 微信</div></div>
+        <div class="fin-cell"><div class="fc-num">65折</div><div class="fc-label">学生票 · 12306</div><div class="fc-body">高铁二等座 65 折 · 每人一年 4 次 · 出发前查额度。</div><div class="fc-micro">12306 学生资质</div></div>
+      </div>
+    </div>
+
+    <!-- 25 4 人分工 -->
+    <div class="slide slide-services" data-index="24">
+      <div class="svc-header">四人分工 · 7/4 前搞定</div>
       <div class="svc-grid">
         <div class="svc-card">
           <div class="svc-title">胡同学</div>
-          <div class="svc-body">协调 lead · 高铁 + 东莞酒店 + 保险协调 + 微信群维护</div>
-          <ul class="svc-bullets">
-            <li>✅ G2837 × 3 已订</li>
-            <li>今晚订 G2945 (贵阳→虎门)</li>
-            <li>东莞 7/11 晚 1 晚酒店</li>
-            <li>建群 + AA 记账小程序</li>
-          </ul>
+          <div class="svc-body">协调 lead · 高铁 + 东莞酒店 + 保险协调 + 微信群维护。</div>
+          <ul class="svc-bullets"><li>✅ G2837 × 3 已订</li><li>今晚订 G2945 (贵阳→虎门)</li><li>东莞 7/11 晚 1 晚酒店</li><li>建群 + AA 记账小程序</li></ul>
         </div>
         <div class="svc-card">
           <div class="svc-title">郑强</div>
-          <div class="svc-body">住宿责任人 · 上半段 4 晚 · 民宿版</div>
-          <ul class="svc-bullets">
-            <li>镇远古城 2 晚</li>
-            <li>双河洞景区 2 晚</li>
-            <li>美团/携程订</li>
-            <li>¥150/间 × 4 = ¥600 总</li>
-          </ul>
+          <div class="svc-body">住宿责任人 · 上半段 4 晚 · 民宿版 · 越早订价越好。</div>
+          <ul class="svc-bullets"><li>镇远古城 2 晚</li><li>双河洞景区 2 晚</li><li>美团/携程订</li><li>¥150/间 × 4 = ¥600 总</li></ul>
         </div>
         <div class="svc-card">
           <div class="svc-title">杨城浩</div>
-          <div class="svc-body">住宿责任人 · 下半段 2 晚 · 民宿版</div>
-          <ul class="svc-bullets">
-            <li>紫云县 1 晚</li>
-            <li>贵阳 D6 晚 1 晚 (近北站)</li>
-            <li>¥150-180/间</li>
-            <li>~¥300-360 总</li>
-          </ul>
+          <div class="svc-body">住宿责任人 · 下半段 2 晚 · 贵阳民宿要近北站方便次日走。</div>
+          <ul class="svc-bullets"><li>紫云县 1 晚</li><li>贵阳 D6 晚 1 晚 (近北站)</li><li>¥150-180/间</li><li>~¥300-360 总</li></ul>
         </div>
         <div class="svc-card">
           <div class="svc-title">遵义朋友</div>
-          <div class="svc-body">交通 + 王牌项目责任人 · 主 lead</div>
-          <ul class="svc-bullets">
-            <li>贵阳租紧凑 SUV 6 天</li>
-            <li>高过河一站式 × 4 (¥1600)</li>
-            <li>双河洞悬崖咖啡 × 4 (¥2000)</li>
-            <li>D1/D7 遵义↔贵阳高铁自订</li>
-          </ul>
+          <div class="svc-body">交通 + 王牌项目责任人 · 主 lead · 本地资源熟。</div>
+          <ul class="svc-bullets"><li>贵阳租紧凑 SUV 6 天</li><li>高过河一站式 × 4 (¥1600)</li><li>双河洞悬崖咖啡 × 4 (¥2000)</li><li>D1/D7 遵义↔贵阳高铁自订</li></ul>
         </div>
       </div>
     </div>
 
-    <!-- 14 CLOSING -->
-    <div class="slide slide-close" data-index="13">
+    <!-- 26 胡同学预算详版 -->
+    <div class="slide slide-financial" data-index="25">
+      <div class="fin-header">胡同学预算 · 详版</div>
+      <div class="fin-grid g3">
+        <div class="fin-cell"><div class="fc-num">¥300</div><div class="fc-label">G2837 高铁</div><div class="fc-body">成都东→贵阳北 07:30 · 已订实价。</div><div class="fc-micro">D1 出发</div></div>
+        <div class="fin-cell"><div class="fc-num">¥290</div><div class="fc-label">G2945 高铁</div><div class="fc-body">贵阳北→虎门 15:09 · 学生 65 折 (全价 ¥450)。</div><div class="fc-micro">D7 返程</div></div>
+        <div class="fin-cell"><div class="fc-num">¥60</div><div class="fc-label">虎门→东莞</div><div class="fc-body">打车 30 min or 地铁 40 min。</div><div class="fc-micro">D7 傍晚</div></div>
+        <div class="fin-cell"><div class="fc-num">¥350</div><div class="fc-label">6 晚住宿分摊</div><div class="fc-body">民宿 ¥150/间 × 6 ÷ 2 拼房。</div><div class="fc-micro">D1-D6</div></div>
+        <div class="fin-cell"><div class="fc-num">¥800</div><div class="fc-label">租车分摊</div><div class="fc-body">紧凑 SUV 6 天 + 油+过路+保险 · ¥3200 / 4 人。</div><div class="fc-micro">D1-D6</div></div>
+        <div class="fin-cell"><div class="fc-num">¥400</div><div class="fc-label">6 天餐饮</div><div class="fc-body">60-70/天 · 民间小馆 + 景区餐。</div><div class="fc-micro">D1-D6</div></div>
+        <div class="fin-cell"><div class="fc-num">¥900</div><div class="fc-label">2 大王牌</div><div class="fc-body">高过河 ¥400 + 悬崖咖啡 ¥500 · 保留 · 砍飞拉达 ¥400。</div><div class="fc-micro">D2 + D4</div></div>
+        <div class="fin-cell"><div class="fc-num">¥105</div><div class="fc-label">门票 + 保险</div><div class="fc-body">格凸河等门票 ¥75 (学生半价) + 意外险 ¥30。</div><div class="fc-micro">现场 + 微信</div></div>
+        <div class="fin-cell"><div class="fc-num">¥3205</div><div class="fc-label">胡同学合计</div><div class="fc-body">⚠️ 超预算目标 ¥205 · G2945 长途高铁贵。</div><div class="fc-micro">学生 65 折已用</div></div>
+      </div>
+    </div>
+
+    <!-- 27 4 人预算对比 -->
+    <div class="slide slide-services" data-index="26">
+      <div class="svc-header">人均预算对比</div>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <div class="svc-title">胡同学 · ¥3205</div>
+          <div class="svc-body">⚠️ 超预算 ¥205 · G2945 长途高铁贵 · 去东莞入职。</div>
+          <ul class="svc-bullets"><li>G2837 ¥300 + G2945 ¥290</li><li>虎门→东莞 ¥60</li><li>东莞外面酒店 1 晚</li></ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-title">郑强 · ¥3025 ✅</div>
+          <div class="svc-body">达标 ¥3000 目标 · 回成都短程高铁 or 飞机。</div>
+          <ul class="svc-bullets"><li>G2837 ¥300</li><li>贵阳→成都 ¥240</li><li>其他与胡同学同</li></ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-title">杨城浩 · ¥3025 ✅</div>
+          <div class="svc-body">达标 · 与郑强同款回成都。</div>
+          <ul class="svc-bullets"><li>G2837 ¥300</li><li>贵阳→成都 ¥240</li><li>回自家最简单</li></ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-title">遵义朋友 · ¥2830 ✅</div>
+          <div class="svc-body">最省一位 · 遵义→贵阳短程高铁 · 无长途机票。</div>
+          <ul class="svc-bullets"><li>遵义→贵阳 ¥65</li><li>贵阳→遵义 ¥65</li><li>本地熟 · 无额外成本</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 28 关键提醒 -->
+    <div class="slide slide-services" data-index="27">
+      <div class="svc-header">关键提醒 · 别踩坑</div>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <div class="svc-title">漂流风险</div>
+          <div class="svc-body">小红书评论区实录：会翻船 · 会浸水 · 救生员可能站着不救。听教练指令 · 别硬玩。</div>
+          <ul class="svc-bullets"><li>穿好救生衣</li><li>不会游泳提前说</li><li>翻船别慌</li><li>保护头部</li></ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-title">山路自驾</div>
+          <div class="svc-body">D5 长车程 4h37 · 2 人轮流开 · 别夜间开 · 山路弯道多注意速度。</div>
+          <ul class="svc-bullets"><li>2 年+驾龄开</li><li>2 人轮流</li><li>不夜间开车</li><li>限速严 · 测速多</li></ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-title">悬崖咖啡 · 恐高党</div>
+          <div class="svc-body">100 米悬崖 + 横渡钢索。恐高党可只走观光段（¥118）· 王牌项目自选。</div>
+          <ul class="svc-bullets"><li>教练带全程</li><li>安全绳保护</li><li>装备可靠</li><li>不勉强</li></ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-title">学生证 · 关键</div>
+          <div class="svc-body">12306 高铁 65 折 · 景区半价 · 一年 4 次学生票额度 · 出发前查用没。</div>
+          <ul class="svc-bullets"><li>塔尔寺 · 格凸河等</li><li>12306 学生资质</li><li>身份证同时带</li><li>省 ¥500+/人</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 29 出发前 checklist -->
+    <div class="slide slide-financial" data-index="28">
+      <div class="fin-header">出发前必做 · Checklist</div>
+      <div class="fin-grid g3">
+        <div class="fin-cell"><div class="fc-num">✅</div><div class="fc-label">已完成 · 7/3</div><div class="fc-body">G2837 × 3 已订 ¥300/张 · 胡同学统一订。</div><div class="fc-micro">胡同学 ✅</div></div>
+        <div class="fin-cell"><div class="fc-num">⏳</div><div class="fc-label">今晚 · 7/3</div><div class="fc-body">胡同学订 G2945 (7/11 贵阳→虎门) · 12306 学生票 65 折。</div><div class="fc-micro">胡同学</div></div>
+        <div class="fin-cell"><div class="fc-num">7/4</div><div class="fc-label">民宿 · 郑强 4 晚</div><div class="fc-body">镇远古城 2 晚 + 双河洞 2 晚 · 美团/携程订 ¥150/间。</div><div class="fc-micro">郑强</div></div>
+        <div class="fin-cell"><div class="fc-num">7/4</div><div class="fc-label">民宿 · 杨城浩 2 晚</div><div class="fc-body">紫云 1 晚 + 贵阳 D6 晚 1 晚 (近北站) · 美团订。</div><div class="fc-micro">杨城浩</div></div>
+        <div class="fin-cell"><div class="fc-num">7/4</div><div class="fc-label">遵义朋友 · 3 项</div><div class="fc-body">贵阳租 SUV · 高过河一站式 × 4 · 双河洞悬崖咖啡 × 4 · D1/D7 自己高铁。</div><div class="fc-micro">遵义朋友</div></div>
+        <div class="fin-cell"><div class="fc-num">7/4</div><div class="fc-label">每人各自</div><div class="fc-body">意外险 ¥30 · 装备打包 · 学生证 · 手机地图离线包。</div><div class="fc-micro">全员</div></div>
+      </div>
+    </div>
+
+    <!-- 30 CLOSING -->
+    <div class="slide slide-close" data-index="29">
       <div class="close-big">出发！</div>
       <div class="close-sub">
         2026/07/05 · 07:30 · 成都东 G2837<br>
@@ -848,7 +868,8 @@
       </div>
       <div class="close-links">
         <a href="https://pusadou.github.io/guizhou-trip-map/" target="_blank">🗺️ 交互地图</a>
-        <a href="https://github.com/pusadou/guizhou-trip-map" target="_blank">📁 Repo</a>
+        <a href="https://github.com/pusadou/guizhou-trip-map" target="_blank">📁 地图 Repo</a>
+        <a href="https://github.com/pusadou/guizhou-adventure-deck" target="_blank">📁 Deck Repo</a>
       </div>
     </div>
 
@@ -861,38 +882,27 @@
       const counter = document.getElementById('counter');
       const total = slides.length;
       let current = 0;
-
       function show(i) {
         slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
         progress.style.width = ((i + 1) / total * 100) + '%';
         counter.textContent = String(i + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
       }
-
       function next() { if (current < total - 1) { current++; show(current); } }
       function prev() { if (current > 0) { current--; show(current); } }
-
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'Enter' || e.key === 'PageDown') {
-          e.preventDefault(); next();
-        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
-          e.preventDefault(); prev();
-        }
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'Enter' || e.key === 'PageDown') { e.preventDefault(); next(); }
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); prev(); }
       });
-
       document.addEventListener('click', (e) => {
-        const x = e.clientX;
-        const w = window.innerWidth;
+        const x = e.clientX; const w = window.innerWidth;
         if (x > w / 2) next(); else prev();
       });
-
       let tx = 0;
       document.addEventListener('touchstart', (e) => { tx = e.changedTouches[0].screenX; });
       document.addEventListener('touchend', (e) => {
         const dx = e.changedTouches[0].screenX - tx;
-        if (dx < -50) next();
-        else if (dx > 50) prev();
+        if (dx < -50) next(); else if (dx > 50) prev();
       });
-
       show(0);
     })();
   </script>
